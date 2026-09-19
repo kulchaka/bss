@@ -11,8 +11,10 @@
   <link rel="preload" href="./assets/Unbounded-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/IBMPlexSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/bmw-hero.webp" as="image" fetchpriority="high">
+  <script src="./theme.js"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./motion.css">
+  <link rel="stylesheet" href="./theme.css">
   <script src="./app.js" defer></script>
   <script src="./motion.js" defer></script>
 </head>
@@ -40,6 +42,7 @@
         <a href="#services">Послуги</a><a href="#approach">Про BSS</a><a href="#process">Як ми працюємо</a>
       </nav>
       <button class="header-book book-trigger" type="button">Записатися <svg><use href="#diagonal"/></svg></button>
+      <button class="theme-toggle" type="button" aria-label="Світла тема" aria-pressed="false" hidden><svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a8.5 8.5 0 0 1-11-11A8.5 8.5 0 1 0 20 15Z"/></svg></button>
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Відкрити меню"><span></span><span></span></button>
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="Мобільна навігація" hidden>

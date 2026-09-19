@@ -31,3 +31,7 @@ The booking form is a clearly labelled demo. It previews and copies a request, w
 ## Fonts
 
 Unbounded SemiBold and IBM Plex Sans Regular/SemiBold are bundled locally. OFL licenses are included under `brand/assets/fonts/`.
+
+## Themes
+
+Use the sun/moon button in the header to switch between dark and light editions. The appearance preference is saved locally; booking data is not saved. Preview either theme directly with `/?theme=light` or `/?theme=dark`. `public/theme.js` applies the preference before styles paint; `public/theme.css` contains the light edition and theme control.

@@ -24,3 +24,9 @@ Still outside this prototype: a live booking endpoint, verified service catalogu
 - Visually inspected desktop hero (lit state), service section, and mobile hero. Both hero frames retain matching element bounds on mobile.
 - Reduced motion hides the decorative instrument and removes continuous/spatial animation. Optional image failure preserves original hero.
 - The tachometer is an illustrative scroll instrument, not vehicle telemetry. The booking flow remains a demo.
+
+## Light edition — 2026-09-19
+- Added porcelain/silver surfaces, graphite text, blue CTA, original dark photographic cards, adapted instrument and form colors.
+- Chrome checks passed: light/dark toggle, URL preview, saved theme across reload/navigation, booking request preview, no page errors.
+- No horizontal overflow at 320, 390, 768 and 1024; visually inspected 1440 desktop hero/services/dialog and 390 mobile hero.
+- Only the appearance preference is saved in localStorage. Storage exceptions are caught; the switch remains usable without persistence. The default remains dark, and ?theme=light opens a direct light preview.

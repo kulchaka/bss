@@ -1,0 +1,63 @@
+/* Daylight edition: porcelain surfaces, graphite typography, blue controls. */
+.theme-toggle{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--silver);transition:background .2s,color .2s}
+.theme-toggle:hover{color:var(--paper);background:var(--graphite)}
+.theme-toggle svg{width:18px;height:18px}.theme-moon{display:none}
+:root[data-theme=light]{--carbon:#f4f5f7;--graphite:#e9edf1;--paper:#171c23;--silver:#485462;--muted:#606c79;--line:#c9d0d8;--blue:#175caa;--ink:#101318;color-scheme:light}
+[data-theme=light] .theme-sun{display:none}[data-theme=light] .theme-moon{display:block}
+[data-theme=light] .site-header{background:linear-gradient(#f4f5f7,#f4f5f7ee);border-color:var(--line)}
+[data-theme=light] .brand-mark{mix-blend-mode:multiply}
+[data-theme=light] .brand-mark img{filter:grayscale(1) invert(1);mix-blend-mode:multiply}
+[data-theme=light] .brand-descriptor,[data-theme=light] .header-book{border-color:var(--line)}
+[data-theme=light] .button-blue{background:#175caa;color:#fff}
+[data-theme=light] .button-blue:hover{background:#104e96;box-shadow:0 8px 26px #175caa20}
+[data-theme=light] .skip-link,[data-theme=light] ::selection{background:#175caa;color:#fff}
+/* Keep the original studio photography framed within a bright editorial hero. */
+[data-theme=light] .hero{background:transparent}
+[data-theme=light] .hero-scene{background:#f4f5f7}
+[data-theme=light] .hero-image{mask-image:linear-gradient(90deg,transparent 27%,#000 62%);opacity:1}
+[data-theme=light] .hero-shade{background:linear-gradient(0deg,#f4f5f7 0%,#f4f5f799 9%,transparent 26%),linear-gradient(90deg,#f4f5f7 0%,#f4f5f7fa 30%,#f4f5f7b8 43%,transparent 66%)}
+[data-theme=light] .hero h1>span{color:#626f7e}
+[data-theme=light] .hero-description{color:#384553}
+[data-theme=light] .hero-coordinate{color:#dce3ed}
+[data-theme=light] .hero .studio-light{mix-blend-mode:multiply;opacity:.25}
+[data-theme=light] .studio-light:before{background:conic-gradient(from 195deg at 76% 0%,transparent 0deg,#50698412 13deg,transparent 28deg,#5367800b 38deg,transparent 55deg)}
+[data-theme=light] .studio-light:after{background:radial-gradient(ellipse at 70% 50%,#8395ac15,transparent 48%)}
+[data-theme=light] .scroll-line{background:#9aa6b5}
+[data-theme=light] .brand-strip{background:#e9edf1;border-color:var(--line)}
+[data-theme=light] .strip-number,[data-theme=light] .strip-inner>div{border-color:var(--line)}
+[data-theme=light] .service-card{border-color:#ced5dd;background:linear-gradient(135deg,#fff,#e6ebf0)}
+[data-theme=light] .service-card:hover,[data-theme=light] .service-card:focus-visible{border-color:var(--blue);background:#dce5ed}
+[data-theme=light] .card-open{border-color:#9ba9b8}
+[data-theme=light] .service-card:hover .card-open,[data-theme=light] .service-card:focus-visible .card-open{color:#fff}
+/* Photographic cards retain legible light captions over their dark vignette. */
+[data-theme=light] .card-diagnostics,[data-theme=light] .card-chassis{--silver:#d0d8e2;--muted:#b9c4d1;color:#f4f6f8;background:#15191f}
+[data-theme=light] .approach{background:#e5e9ee;color:#171c23}
+[data-theme=light] .approach h2>span{color:#5e6b7b}
+[data-theme=light] .detail-label{color:#f4f6f8}
+[data-theme=light] .detail-cross{--silver:#b6bec9}
+[data-theme=light] .booking-banner{background:#e4eaf0;border-color:var(--line)}
+[data-theme=light] .banner-lines{background:repeating-linear-gradient(110deg,transparent 0,transparent 95px,#65788e25 96px,transparent 97px)}
+[data-theme=light] .footer-bottom{border-color:var(--line)}
+[data-theme=light] dialog{background:#f8f9fb;box-shadow:0 30px 100px #25364b40}
+[data-theme=light] dialog::backdrop{background:#29384b80}
+[data-theme=light] .dialog-close:hover{background:#e2e8ef}
+[data-theme=light] #booking-form input,[data-theme=light] #booking-form select,[data-theme=light] #booking-form textarea{background:#fff;color:#171c23}
+[data-theme=light] #booking-form input::placeholder,[data-theme=light] #booking-form textarea::placeholder{color:#637080}
+[data-theme=light] .demo-notice{background:#175caa09}
+[data-theme=light] .headlight-toggle{background:#f4f5f7e8;border-color:#9eacbb;color:#202a36}
+[data-theme=light] .light-icon,[data-theme=light] .light-state{color:#485462}
+[data-theme=light] .headlights-on .light-state,[data-theme=light] .headlights-on .light-icon{color:#175caa}
+[data-theme=light] .drive-hud{color:#25364a;background:radial-gradient(ellipse,#f4f5f7ed,transparent 72%);filter:none;opacity:.65}
+[data-theme=light] .drive-caption,[data-theme=light] .drive-rpm,[data-theme=light] .drive-mode span{color:#4c6077}
+[data-theme=light] .dial-marks line{stroke:#52667c}
+[data-theme=light] .dial-marks .redline{stroke:#b3473a}
+[data-theme=light] .dial-numbers text,[data-theme=light] .dial-unit{fill:#42576e;stroke:none}
+[data-theme=light] .dial-needle{fill:#175caa;stroke:#175caa}
+[data-theme=light] .dial-needle circle{fill:#f4f5f7;stroke:#175caa}
+[data-theme=light] .dialog-open .drive-hud{opacity:0}
+@media(max-width:1150px){.header-inner{gap:18px}.desktop-nav{gap:18px}}
+@media(max-width:560px){.header-inner{gap:9px}.header-book{gap:6px;margin-left:auto}.theme-toggle{width:44px;flex-basis:44px}.menu-toggle{width:30px;padding:5px}
+[data-theme=light] .hero-image{mask-image:linear-gradient(180deg,transparent 0%,#000 27%,#000 70%,transparent 100%)}
+[data-theme=light] .hero-shade{background:linear-gradient(180deg,#f4f5f7 0%,#f4f5f7 35%,#f4f5f780 46%,transparent 57%,transparent 69%,#f4f5f7 89%)}
+[data-theme=light] .hero-actions .text-link{color:#384553}
+}
