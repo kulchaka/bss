@@ -17,3 +17,7 @@ Use case: ads-marketing. Asset type: premium BMW service website editorial detai
 These are illustrative advertising assets, not evidence of an actual workshop, customer vehicle, or completed service.
 
 Web delivery: `public/assets/bmw-hero.webp` and `public/assets/bmw-detail.webp` are compressed WebP exports of the generated originals, with unchanged dimensions and composition. Original PNGs are retained.
+
+## Interactive lighting variant — 2026-09-19
+Input: public/assets/bmw-hero.webp. Output: public/assets/bmw-hero-lit.webp.
+Built-in image generation edit, lighting-weather: preserve camera, silhouette, wheels, grille, composition and crop. Switch headlights fully on, add crisp cool-white illumination with subtle bloom and a broad silver softbox reflection on hood and shoulder. Keep left third dark for typography. No new objects, text, neon or camera movement. Original image retained; new variant is illustrative.

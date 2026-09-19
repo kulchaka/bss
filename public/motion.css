@@ -18,3 +18,10 @@
 @media(max-width:1100px){.drive-hud{width:110px;right:9px;bottom:9px;opacity:.4}.drive-caption,.drive-mode,.drive-rpm{display:none}.drive-gear{font-size:17px}.drive-readout{margin-top:-16px}}
 @media(max-width:560px){.drive-hud{width:75px;bottom:14px;opacity:.3}.drive-hud.is-driving{opacity:.5}.drive-gear{font-size:12px}.drive-readout{margin-top:-13px}}
 @media(prefers-reduced-motion:reduce){.drive-hud{display:none}}
+
+.hero-image-lit{position:absolute;inset:0;opacity:0!important;transition:opacity .8s cubic-bezier(.22,1,.36,1)}
+.headlights-on .hero-image-lit{opacity:1!important}
+.headlight-toggle{position:absolute;z-index:3;right:var(--gutter);top:38%;display:flex;align-items:center;gap:14px;min-height:44px;padding:12px 15px;border:1px solid #b6bec933;background:#080a0d80;color:#d8e0e9;font:10px Plex,sans-serif;letter-spacing:.04em;backdrop-filter:blur(8px)}
+.light-icon{font-size:19px;color:var(--silver)}.light-state{font-size:8px;color:var(--muted);min-width:20px}.headlights-on .light-state,.headlights-on .light-icon{color:#dcefff}.headlight-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(max-width:800px){.headlight-toggle{top:55%;font-size:9px}}
+@media(max-width:560px){.headlight-toggle{top:564px;right:22px;padding:6px 10px;min-height:44px;background:#080a0d9c}}

@@ -11,6 +11,39 @@
     section.prepend(light);
   });
 
+  const hero = document.querySelector('.hero');
+  const scene = hero.querySelector('.hero-scene');
+  const lit = new Image(1672, 941);
+  lit.className = 'hero-image hero-image-lit';
+  lit.alt = '';
+  lit.src = './assets/bmw-hero-lit.webp';
+  const lightButton = document.createElement('button');
+  lightButton.type = 'button';
+  lightButton.className = 'headlight-toggle';
+  lightButton.setAttribute('aria-pressed', 'false');
+  lightButton.innerHTML = '<span class="light-icon" aria-hidden="true">◖ ≡</span><span>Світло фар</span><span class="light-state" aria-hidden="true">OFF</span>';
+  let lockedLight = false;
+  const lightState = active => {
+    hero.classList.toggle('headlights-on', active);
+    lightButton.querySelector('.light-state').textContent = active ? 'ON' : 'OFF';
+  };
+  lit.decode().then(() => {
+    scene.insertBefore(lit, scene.querySelector('.hero-shade'));
+    hero.append(lightButton);
+    lightButton.addEventListener('click', () => {
+      lockedLight = !lockedLight;
+      lightButton.setAttribute('aria-pressed', String(lockedLight));
+      lightState(lockedLight);
+    });
+    hero.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || lockedLight || reduce.matches) return;
+      const rect = hero.getBoundingClientRect();
+      lightState((event.clientX - rect.left) / rect.width > .48 && !event.target.closest('button,a'));
+    });
+    hero.addEventListener('pointerleave', () => lightState(lockedLight));
+    reduce.addEventListener('change', () => lightState(lockedLight));
+  }).catch(() => { /* Keep original photograph when the optional image fails. */ });
+
   const hud = document.createElement('div');
   hud.className = 'drive-hud';
   hud.setAttribute('aria-hidden', 'true');
