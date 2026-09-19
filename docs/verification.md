@@ -16,3 +16,11 @@ Checked locally in the Codex browser, 2026-09-15.
 - Reduced-motion behavior checked in CSS/JS: no parallax, tilt, spatial reveals or loader animation. OS-level reduced-motion emulation was not exercised.
 
 Still outside this prototype: a live booking endpoint, verified service catalogue and contact data, actual workshop/team imagery, final vector logo, production hosting and cross-browser/device performance audit. Clipboard success/failure paths are implemented; clipboard access was not invoked during testing to avoid replacing the user's clipboard.
+
+## Motion pass — 2026-09-19
+- JavaScript syntax checks pass for server, app, and motion layer.
+- Headless Chrome: headlights toggle and aria-pressed, scrolling into gear 03, service filtering, service/booking dialogs and Escape, mobile menu, live reduced-motion preference. No page errors.
+- Viewport overflow checked at 320, 390, 768 and 1440 CSS pixels. Corrected ambient layer overflow and mobile image alignment.
+- Visually inspected desktop hero (lit state), service section, and mobile hero. Both hero frames retain matching element bounds on mobile.
+- Reduced motion hides the decorative instrument and removes continuous/spatial animation. Optional image failure preserves original hero.
+- The tachometer is an illustrative scroll instrument, not vehicle telemetry. The booking flow remains a demo.

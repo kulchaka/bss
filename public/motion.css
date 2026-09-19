@@ -36,3 +36,8 @@
 @media(hover:hover) and (pointer:fine){.motion-ready .service-card.is-visible:hover{transform:perspective(1000px) translateY(-4px) rotateX(var(--card-y,0deg)) rotateY(var(--card-x,0deg))}}
 .service-card:focus-visible{outline:2px solid var(--silver);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.service-card:hover,.motion-ready .service-card.is-visible:hover{transform:none}.button:after,.header-book:after{display:none}.hero-image-lit{transition:none}}
+
+/* Keep ambient layers inside page width and both photo states aligned. */
+.services>.studio-light,.process>.studio-light{inset:0}
+.scene-index{visibility:hidden}
+@media(max-width:560px){.hero-image-lit{top:240px;bottom:auto}}
