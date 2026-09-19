@@ -1,0 +1,12 @@
+/* BSS studio lighting: bounded layers preserve readable content. */
+.hero,.services,.process,.booking-banner{isolation:isolate}
+.studio-light{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;contain:paint}
+.studio-light:before,.studio-light:after{content:'';position:absolute;inset:-20%;background:conic-gradient(from 195deg at 76% 0%,transparent 0deg,#d5e4f015 13deg,transparent 28deg,#eff5ff0c 38deg,transparent 55deg);transform-origin:76% 0;animation:studio-drift 18s ease-in-out infinite alternate}
+.studio-light:after{background:radial-gradient(ellipse at 70% 50%,#c8d8ed13,transparent 48%);animation-duration:23s;animation-direction:alternate-reverse}
+.hero .studio-light{z-index:1;mix-blend-mode:screen;opacity:.85}
+.hero-content,.hero-bottom,.hero-coordinate{z-index:2}
+.services,.process{position:relative}
+.services>.studio-light,.process>.studio-light{z-index:-1;inset:0 calc(-1 * var(--gutter))}
+@keyframes studio-drift{from{transform:translate3d(-2%,0,0) rotate(-6deg)}to{transform:translate3d(3%,2%,0) rotate(7deg)}}
+.page-asleep .studio-light:before,.page-asleep .studio-light:after{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.studio-light:before,.studio-light:after{animation:none;transform:none}}
