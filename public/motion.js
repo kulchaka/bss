@@ -10,4 +10,50 @@
     light.setAttribute('aria-hidden', 'true');
     section.prepend(light);
   });
+
+  const hud = document.createElement('div');
+  hud.className = 'drive-hud';
+  hud.setAttribute('aria-hidden', 'true');
+  const marks = Array.from({length: 41}, (_, i) => {
+    const angle = (-130 + i * 6.5) * Math.PI / 180;
+    const r = i % 5 === 0 ? 78 : 84;
+    const point = radius => `${100 + Math.sin(angle) * radius},${100 - Math.cos(angle) * radius}`;
+    return `<line x1="${point(r).split(',')[0]}" y1="${point(r).split(',')[1]}" x2="${point(90).split(',')[0]}" y2="${point(90).split(',')[1]}" class="${i > 33 ? 'redline' : ''}"/>`;
+  }).join('');
+  const numbers = Array.from({length: 9}, (_, i) => {
+    const a = (-130 + i * 32.5) * Math.PI / 180;
+    return `<text x="${100 + Math.sin(a) * 66}" y="${104 - Math.cos(a) * 66}">${i}</text>`;
+  }).join('');
+  hud.innerHTML = `<div class="drive-caption">BSS / PRECISION IN MOTION</div><svg viewBox="0 0 200 180"><g class="dial-marks">${marks}</g><g class="dial-numbers">${numbers}</g><g class="dial-needle"><path d="M98 105 100 26 102 105Z"/><circle cx="100" cy="100" r="4"/></g><text class="dial-unit" x="100" y="132">RPM × 1000</text></svg><div class="drive-readout"><span class="drive-mode">SPORT<span>SCROLL DRIVE</span></span><strong class="drive-gear">01</strong><span class="drive-rpm">0800</span></div>`;
+  document.body.append(hud);
+  const needle = hud.querySelector('.dial-needle');
+  const gearText = hud.querySelector('.drive-gear');
+  const rpmText = hud.querySelector('.drive-rpm');
+  let scheduled = 0;
+  const renderDrive = () => {
+    scheduled = 0;
+    if (reduce.matches) return;
+    const total = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    const progress = Math.max(0, Math.min(.999999, scrollY / total));
+    const phase = progress * 5;
+    const gear = Math.floor(phase) + 1;
+    const within = phase % 1;
+    const rpm = Math.round((gear === 1 ? 800 : 2800) + within * (gear === 1 ? 5600 : 3600));
+    needle.style.transform = `rotate(${-130 + rpm / 8000 * 260}deg)`;
+    const nextGear = String(gear).padStart(2, '0');
+    if (gearText.textContent !== nextGear) {
+      gearText.textContent = nextGear;
+      gearText.getAnimations().forEach(animation => animation.cancel());
+      gearText.animate([{opacity:.25,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'ease-out'});
+    }
+    rpmText.textContent = String(rpm).padStart(4, '0');
+    hud.classList.toggle('is-driving', scrollY > 80);
+  };
+  const scheduleDrive = () => { if (!scheduled && !reduce.matches && !document.hidden) scheduled = requestAnimationFrame(renderDrive); };
+  addEventListener('scroll', scheduleDrive, {passive:true});
+  addEventListener('resize', scheduleDrive);
+  reduce.addEventListener('change', scheduleDrive);
+  document.addEventListener('visibilitychange', scheduleDrive);
+  new ResizeObserver(scheduleDrive).observe(document.body);
+  scheduleDrive();
 })();

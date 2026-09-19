@@ -10,3 +10,11 @@
 @keyframes studio-drift{from{transform:translate3d(-2%,0,0) rotate(-6deg)}to{transform:translate3d(3%,2%,0) rotate(7deg)}}
 .page-asleep .studio-light:before,.page-asleep .studio-light:after{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.studio-light:before,.studio-light:after{animation:none;transform:none}}
+
+/* Original BSS instrument; a decorative scroll signal, never a control. */
+.drive-hud{position:fixed;right:20px;bottom:22px;width:190px;z-index:8;pointer-events:none;color:#d8e0e9;opacity:.35;transition:opacity .5s;background:radial-gradient(ellipse,#080a0de0,transparent 72%);filter:drop-shadow(0 2px 4px #080a0d)}
+.drive-hud.is-driving{opacity:.7}.drive-caption{font:8px Plex,sans-serif;letter-spacing:.16em;text-align:center;color:#a2adbb}.drive-hud svg{display:block;width:100%;height:auto}.dial-marks line{stroke:#a7b5c5;stroke-width:1}.dial-marks .redline{stroke:#cf665b;stroke-width:2}.dial-numbers text{text-anchor:middle;fill:#a7b5c5;font:10px Plex,sans-serif}.dial-needle{transform-origin:100px 100px;transform:rotate(-104deg);transition:transform .18s ease-out;fill:#ecf2fa}.dial-needle circle{fill:#080a0d;stroke:#d3dde9;stroke-width:1.5}.dial-unit{text-anchor:middle;fill:#8993a0;font:6px Plex,sans-serif;letter-spacing:1px}.drive-readout{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:-24px}.drive-mode{font:8px Plex,sans-serif;letter-spacing:.15em}.drive-mode span{display:block;font-size:5px;color:#8993a0;margin-top:5px}.drive-gear{font:26px Unbounded,sans-serif;font-variant-numeric:tabular-nums}.drive-rpm{font:9px Plex,sans-serif;font-variant-numeric:tabular-nums;color:#8993a0}.dialog-open .drive-hud{opacity:0}
+@media(min-width:1500px){.drive-hud{right:30px;width:220px}}
+@media(max-width:1100px){.drive-hud{width:110px;right:9px;bottom:9px;opacity:.4}.drive-caption,.drive-mode,.drive-rpm{display:none}.drive-gear{font-size:17px}.drive-readout{margin-top:-16px}}
+@media(max-width:560px){.drive-hud{width:75px;bottom:14px;opacity:.3}.drive-hud.is-driving{opacity:.5}.drive-gear{font-size:12px}.drive-readout{margin-top:-13px}}
+@media(prefers-reduced-motion:reduce){.drive-hud{display:none}}
