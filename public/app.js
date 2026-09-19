@@ -14,6 +14,7 @@ if ('IntersectionObserver' in window) {
       if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
     });
   }, { threshold: .08 });
+  $$('.service-card.reveal').forEach((el, index) => el.style.setProperty('--reveal-delay', `${index % 2 * 85}ms`));
   $$('.reveal').forEach(el => revealObserver.observe(el));
   document.body.classList.add('motion-ready');
   const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {

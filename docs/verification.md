@@ -35,3 +35,6 @@ Still outside this prototype: a live booking endpoint, verified service catalogu
 - Replaced all four photographic placements in light mode with the new G20 hero/detail series, plus a separate lit hero state. Dark mode retains its existing assets.
 - Verified loaded image sources after four consecutive theme switches, with headlights enabled; no stale hidden lighting layer and no browser errors.
 - Re-ran light/dark persistence, booking preview, and responsive overflow checks at 320/390/768/1024. Visually inspected desktop hero, service cards, and mobile hero.
+
+## Smooth motion refinement — 2026-09-19
+Chrome passed: dark/light transitions in both directions, enabled headlights, accordion opening/closing by mouse and keyboard, interrupted accordion animation, reduced-motion behavior, simulated missing View Transitions API fallback, mobile booking dialog, and no horizontal overflow. No page errors. Inspected transition midpoint; settled entrance animation before snapshots to avoid text offset ghosting. Syntax and whitespace checks pass.

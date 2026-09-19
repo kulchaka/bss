@@ -75,3 +75,14 @@
 [data-theme=light] .detail-cross{--silver:#526071}
 .hero-image-lit.is-loading{visibility:hidden}
 @media(max-width:560px){[data-theme=light] .hero-shade{background:linear-gradient(180deg,#f4f5f7 0%,#f4f5f7 34%,#f4f5f740 47%,transparent 57%,transparent 70%,#f4f5f7 92%)}}
+
+/* Whole-page snapshots include theme-specific photos, eliminating abrupt swaps. */
+::view-transition-group(root){animation-duration:760ms;animation-timing-function:cubic-bezier(.4,0,.2,1)}
+::view-transition-old(root){animation:theme-out 760ms cubic-bezier(.4,0,.2,1) both;mix-blend-mode:normal}
+::view-transition-new(root){animation:theme-in 760ms cubic-bezier(.4,0,.2,1) both;mix-blend-mode:normal}
+::view-transition{pointer-events:none}
+@keyframes theme-out{from{opacity:1}to{opacity:1}}
+@keyframes theme-in{from{opacity:0}to{opacity:1}}
+.theme-fading body,.theme-fading .site-header,.theme-fading .brand-strip,.theme-fading .service-card,.theme-fading .approach,.theme-fading .booking-banner,.theme-fading .site-footer{transition:background-color .65s ease,color .65s ease,border-color .65s ease}
+.theme-toggle[aria-busy=true]{cursor:progress}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),::view-transition-group(root){animation:none!important}.theme-fading *{transition:none!important}}

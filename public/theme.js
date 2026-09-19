@@ -34,6 +34,57 @@
     };
     button.hidden = false;
     apply(initial);
-    button.addEventListener('click', () => apply(root.dataset.theme === 'light' ? 'dark' : 'light', true));
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    const warmed = new Map();
+    const warmTheme = theme => {
+      const prefix = theme === 'light' ? 'bmw-g20' : 'bmw';
+      if (!warmed.has(theme)) warmed.set(theme, Promise.allSettled(['hero', 'hero-lit', 'detail'].map(asset => {
+        const image = new Image(); image.src = `./assets/${prefix}-${asset}.webp`;
+        return image.decode();
+      })));
+      return warmed.get(theme);
+    };
+    let busy = false;
+    let activeTransition;
+    reduce.addEventListener('change', () => { if (reduce.matches) activeTransition?.skipTransition(); });
+    button.addEventListener('pointerenter', () => warmTheme(root.dataset.theme === 'light' ? 'dark' : 'light'), {passive:true});
+    button.addEventListener('focus', () => warmTheme(root.dataset.theme === 'light' ? 'dark' : 'light'));
+    button.addEventListener('click', async () => {
+      if (busy) return;
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      busy = true;
+      button.setAttribute('aria-busy', 'true');
+      try {
+        // Bound image preparation so poor connectivity never blocks the theme control.
+        await Promise.race([warmTheme(next), new Promise(resolve => setTimeout(resolve, 1200))]);
+        if (document.startViewTransition && !reduce.matches) {
+          // Settle entrance motion before snapshots to avoid double text at different offsets.
+          document.querySelectorAll('.hero-enter,.reveal').forEach(element => {
+            element.getAnimations().forEach(animation => {
+              if (animation.effect?.getTiming().iterations !== Infinity) animation.finish();
+            });
+          });
+          activeTransition = document.startViewTransition(async () => {
+            apply(next, true);
+            await Promise.race([
+              Promise.allSettled([...document.querySelectorAll('.hero-image, img[data-light-src]')].map(img => img.decode())),
+              new Promise(resolve => setTimeout(resolve, 250))
+            ]);
+          });
+          await activeTransition.finished;
+        } else {
+          root.classList.toggle('theme-fading', !reduce.matches);
+          apply(next, true);
+          if (!reduce.matches) await new Promise(resolve => setTimeout(resolve, 650));
+        }
+      } catch {
+        apply(next, true);
+      } finally {
+        root.classList.remove('theme-fading');
+        activeTransition = null;
+        busy = false;
+        button.removeAttribute('aria-busy');
+      }
+    });
   });
 })();

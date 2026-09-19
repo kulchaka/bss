@@ -87,6 +87,36 @@
     reduce.addEventListener('change', reset);
   });
 
+  // Animate intrinsic accordion height while retaining native details semantics.
+  document.querySelectorAll('.process-step,.faq-list details').forEach(details => {
+    const summary = details.querySelector('summary');
+    let animation;
+    let expanded = details.open;
+    const settle = () => {
+      details.open = expanded;
+      details.classList.remove('accordion-moving');
+      details.style.removeProperty('height');
+      animation = null;
+    };
+    summary.addEventListener('click', event => {
+      if (reduce.matches) return;
+      event.preventDefault();
+      const from = details.getBoundingClientRect().height;
+      if (animation) { animation.oncancel = null; animation.onfinish = null; animation.cancel(); }
+      expanded = !expanded;
+      details.open = true;
+      details.style.removeProperty('height');
+      const to = expanded ? details.getBoundingClientRect().height : summary.getBoundingClientRect().height + 2;
+      details.classList.add('accordion-moving');
+      animation = details.animate([{height:`${from}px`},{height:`${to}px`}], {duration:420,easing:'cubic-bezier(.22,.68,0,1.01)'});
+      animation.onfinish = settle;
+    });
+    details.addEventListener('toggle', () => { if (!animation) expanded = details.open; });
+    reduce.addEventListener('change', () => {
+      if (animation && reduce.matches) { animation.cancel(); settle(); }
+    });
+  });
+
   const hud = document.createElement('div');
   hud.className = 'drive-hud';
   hud.setAttribute('aria-hidden', 'true');

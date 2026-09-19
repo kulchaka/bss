@@ -41,3 +41,19 @@
 .services>.studio-light,.process>.studio-light{inset:0}
 .scene-index{visibility:hidden}
 @media(max-width:560px){.hero-image-lit{top:240px;bottom:auto}}
+
+/* One restrained timing language for editorial reveals and tactile feedback. */
+:root{--ease-smooth:cubic-bezier(.22,.68,0,1.01)}
+.reveal{transition:opacity .85s var(--ease-smooth),transform .95s var(--ease-smooth),filter .85s var(--ease-smooth);transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .reveal:not(.is-visible){transform:translateY(24px);filter:blur(3px)}
+.reveal.is-visible{filter:blur(0)}
+.motion-ready .service-card.reveal.is-visible{transition:opacity .8s var(--ease-smooth),transform .5s var(--ease-smooth),filter .8s var(--ease-smooth),border-color .35s,background .35s}
+.hero-enter{animation-duration:1.15s;animation-timing-function:var(--ease-smooth)}
+.button,.button svg,.text-link svg,.card-open{transition-duration:.35s;transition-timing-function:var(--ease-smooth)}
+.service-card>img{transition:transform 1s var(--ease-smooth),filter .65s var(--ease-smooth)}
+.detail-frame{transition:transform .65s var(--ease-smooth)}
+.mobile-menu:not([hidden]){animation:menu-arrive .4s var(--ease-smooth) both}
+@keyframes menu-arrive{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.accordion-moving{overflow:hidden}
+.accordion-moving .step-body,.accordion-moving>p{animation:none}
+@media(prefers-reduced-motion:reduce){.motion-ready .reveal:not(.is-visible),.reveal.is-visible{filter:none;transform:none}.reveal{transition:none}}
