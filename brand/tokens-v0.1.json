@@ -1,0 +1,48 @@
+{
+  "status": "proposed-v0.1",
+  "colors": {
+    "black": "#080A0D",
+    "panel": "#15191F",
+    "white": "#F4F6F8",
+    "silver": "#B6BEC9",
+    "muted": "#8993A0",
+    "line": "#343C48",
+    "blue": "#73B7FF",
+    "ink": "#101318",
+    "error": "#FF8C94",
+    "success": "#91D4B0"
+  },
+  "fonts": {
+    "heading": "IBM Plex Sans Condensed",
+    "body": "IBM Plex Sans"
+  },
+  "spacing": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "radius": {
+    "card": 4,
+    "button": 2
+  },
+  "motion": {
+    "microMs": 180,
+    "panelMs": 350,
+    "revealMs": 600,
+    "staggerMs": 50,
+    "ease": [
+      0.22,
+      1,
+      0.36,
+      1
+    ],
+    "tiltMaxDeg": 2,
+    "parallaxMaxPercent": 4,
+    "reducedMotion": "Disable tilt, parallax and spatial transitions; short fade or instant state."
+  }
+}
