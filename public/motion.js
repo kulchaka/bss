@@ -44,6 +44,30 @@
     reduce.addEventListener('change', () => lightState(lockedLight));
   }).catch(() => { /* Keep original photograph when the optional image fails. */ });
 
+  document.querySelectorAll('.service-card').forEach(card => {
+    let pointerFrame = 0;
+    const reset = () => {
+      cancelAnimationFrame(pointerFrame);
+      pointerFrame = 0;
+      ['--card-x','--card-y','--glare-x','--glare-y'].forEach(name => card.style.removeProperty(name));
+    };
+    card.addEventListener('pointermove', event => {
+      if (reduce.matches || event.pointerType !== 'mouse') return;
+      cancelAnimationFrame(pointerFrame);
+      pointerFrame = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        card.style.setProperty('--card-x', `${(x - .5) * 4}deg`);
+        card.style.setProperty('--card-y', `${(.5 - y) * 4}deg`);
+        card.style.setProperty('--glare-x', `${x * 100}%`);
+        card.style.setProperty('--glare-y', `${y * 100}%`);
+      });
+    });
+    card.addEventListener('pointerleave', reset);
+    reduce.addEventListener('change', reset);
+  });
+
   const hud = document.createElement('div');
   hud.className = 'drive-hud';
   hud.setAttribute('aria-hidden', 'true');

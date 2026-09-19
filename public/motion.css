@@ -25,3 +25,14 @@
 .light-icon{font-size:19px;color:var(--silver)}.light-state{font-size:8px;color:var(--muted);min-width:20px}.headlights-on .light-state,.headlights-on .light-icon{color:#dcefff}.headlight-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 @media(max-width:800px){.headlight-toggle{top:55%;font-size:9px}}
 @media(max-width:560px){.headlight-toggle{top:564px;right:22px;padding:6px 10px;min-height:44px;background:#080a0d9c}}
+
+/* Tactile controls share a single silver highlight language. */
+.button,.header-book{position:relative;isolation:isolate;overflow:hidden}
+.button:after,.header-book:after{content:'';position:absolute;inset:-60% -100%;pointer-events:none;background:linear-gradient(110deg,transparent 40%,#f4f6f85c 49%,transparent 58%);transform:translateX(-55%);transition:transform .65s var(--ease)}
+.button:hover:after,.button:focus-visible:after,.header-book:hover:after,.header-book:focus-visible:after{transform:translateX(55%)}
+.button:focus-visible svg{transform:translate(2px,-2px)}
+.service-card:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--glare-x,50%) var(--glare-y,30%),#e2edff24,transparent 60%);transition:opacity .3s}
+.service-card:hover:after,.service-card:focus-visible:after{opacity:1}
+@media(hover:hover) and (pointer:fine){.motion-ready .service-card.is-visible:hover{transform:perspective(1000px) translateY(-4px) rotateX(var(--card-y,0deg)) rotateY(var(--card-x,0deg))}}
+.service-card:focus-visible{outline:2px solid var(--silver);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.service-card:hover,.motion-ready .service-card.is-visible:hover{transform:none}.button:after,.header-book:after{display:none}.hero-image-lit{transition:none}}
