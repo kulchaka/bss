@@ -21,3 +21,10 @@ Web delivery: `public/assets/bmw-hero.webp` and `public/assets/bmw-detail.webp` 
 ## Interactive lighting variant — 2026-09-19
 Input: public/assets/bmw-hero.webp. Output: public/assets/bmw-hero-lit.webp.
 Built-in image generation edit, lighting-weather: preserve camera, silhouette, wheels, grille, composition and crop. Switch headlights fully on, add crisp cool-white illumination with subtle bloom and a broad silver softbox reflection on hood and shoulder. Keep left third dark for typography. No new objects, text, neon or camera movement. Original image retained; new variant is illustrative.
+
+## Light-theme BMW G20 series — 2026-09-19
+Generated with built-in imagegen, separate from the dark-theme BMW assets.
+- `bmw-g20-hero.webp`: silver BMW 3 Series G20 sedan, front three-quarter view, bright pearl-white architectural studio, satin silver floor, empty left side for typography, daylight LED signature, photoreal advertising photograph, no text or people.
+- `bmw-g20-hero-lit.webp`: edit of the hero preserving camera, composition, vehicle and background; enable cool-white headlights with localized bloom and subtle reflected light.
+- `bmw-g20-detail.webp`: new close-up referencing the same silver G20, matching split-spoke wheel, visible brake disc and dark blue caliper, daylight studio and light floor. Landscape 4:3 for card and portrait cropping.
+All three generated images were visually inspected and exported as WebP. Hero states are 1672×941; detail is 1448×1086. These are illustrative generated photos.

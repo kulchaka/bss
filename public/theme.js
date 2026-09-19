@@ -6,11 +6,20 @@
   try { saved = localStorage.getItem('bss-theme'); } catch { /* Storage may be disabled. */ }
   const initial = ['light', 'dark'].includes(preview) ? preview : saved === 'light' ? 'light' : 'dark';
   root.dataset.theme = initial;
+  const preload = document.createElement('link');
+  preload.rel = 'preload'; preload.as = 'image';
+  preload.href = initial === 'light' ? './assets/bmw-g20-hero.webp' : './assets/bmw-hero.webp';
+  document.head.append(preload);
   document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('.theme-toggle');
     const apply = (theme, persist = false) => {
       root.dataset.theme = theme;
       const light = theme === 'light';
+      document.querySelectorAll('img[data-light-src]').forEach(image => {
+        const src = light ? image.dataset.lightSrc : image.dataset.darkSrc;
+        if (image.getAttribute('src') !== src) image.src = src;
+      });
+      document.dispatchEvent(new Event('bss:themechange'));
       button.setAttribute('aria-pressed', String(light));
       button.title = light ? 'Увімкнути темну тему' : 'Увімкнути світлу тему';
       document.querySelector('meta[name="theme-color"]')?.setAttribute('content', light ? '#f4f5f7' : '#080a0d');

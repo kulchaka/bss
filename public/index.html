@@ -10,7 +10,6 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/Unbounded-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/IBMPlexSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="./assets/bmw-hero.webp" as="image" fetchpriority="high">
   <script src="./theme.js"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./motion.css">
@@ -53,7 +52,7 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-scene" aria-hidden="true"><img class="hero-image" src="./assets/bmw-hero.webp" alt="" width="1672" height="941" fetchpriority="high"><div class="hero-shade"></div></div>
+      <div class="hero-scene" aria-hidden="true"><img class="hero-image" src="./assets/bmw-hero.webp" data-dark-src="./assets/bmw-hero.webp" data-light-src="./assets/bmw-g20-hero.webp" alt="" width="1672" height="941" fetchpriority="high"><div class="hero-shade"></div></div>
       <div class="hero-content page-width">
         <div class="eyebrow hero-enter"><span class="status-dot"></span> НЕЗАЛЕЖНИЙ СЕРВІС BMW <span class="eyebrow-divider">/</span> ЛЬВІВ</div>
         <h1 class="hero-enter" id="hero-heading">Точність.<br>У кожній<br><span>деталі.</span></h1>
@@ -80,14 +79,14 @@
       <div class="service-toolbar reveal"><div class="service-filters" role="group" aria-label="Фільтрувати послуги"><button class="filter active" data-filter="all" aria-pressed="true">Усі послуги <sup>04</sup></button><button class="filter" data-filter="care" aria-pressed="false">Обслуговування</button><button class="filter" data-filter="tech" aria-pressed="false">Діагностика та ПЗ</button></div><span class="toolbar-hint" aria-hidden="true">ОБЕРІТЬ СВІЙ НАПРЯМ <svg><use href="#diagonal"/></svg></span></div>
       <div class="service-grid" id="service-grid">
         <button type="button" class="service-card card-diagnostics reveal" data-service="diagnostics" data-category="tech" aria-haspopup="dialog">
-          <img src="./assets/bmw-hero.webp" alt="" width="1672" height="941" loading="lazy">
+          <img src="./assets/bmw-hero.webp" data-dark-src="./assets/bmw-hero.webp" data-light-src="./assets/bmw-g20-hero.webp" alt="" width="1672" height="941" loading="lazy">
           <span class="card-vignette"></span><span class="card-top"><span>01 / DIAGNOSTICS</span><span class="card-open"><svg><use href="#diagonal"/></svg></span></span>
           <span class="diagnostic-reticle" aria-hidden="true"><i></i><span>BMW / SYSTEM CHECK</span></span>
           <span class="card-content"><span class="card-caption">ЗРОЗУМІТИ АВТОМОБІЛЬ</span><span class="card-title">Комп’ютерна<br>діагностика</span><span class="card-description">Починаємо з точної картини.</span></span>
         </button>
         <button type="button" class="service-card card-maintenance reveal" data-service="maintenance" data-category="care" aria-haspopup="dialog"><span class="card-top"><span>02 / MAINTENANCE</span><span class="card-open"><svg><use href="#diagonal"/></svg></span></span><svg class="service-symbol"><use href="#oil"/></svg><span class="card-content"><span class="card-title">Технічне<br>обслуговування</span><span class="card-description">У правильному ритмі.</span></span></button>
         <button type="button" class="service-card card-software reveal" data-service="software" data-category="tech" aria-haspopup="dialog"><span class="card-top"><span>03 / SOFTWARE</span><span class="card-open"><svg><use href="#diagonal"/></svg></span></span><svg class="service-symbol"><use href="#chip"/></svg><span class="card-content"><span class="card-title">Програмне<br>забезпечення</span><span class="card-description">Увага до невидимого.</span></span></button>
-        <button type="button" class="service-card card-chassis reveal" data-service="chassis" data-category="care" aria-haspopup="dialog"><img src="./assets/bmw-detail.webp" alt="" width="1448" height="1086" loading="lazy"><span class="card-vignette"></span><span class="card-top"><span>04 / CONTROL</span><span class="card-open"><svg><use href="#diagonal"/></svg></span></span><span class="card-content"><span class="card-caption">ВІДЧУВАТИ КОЖЕН РУХ</span><span class="card-title">Ходова<br>та гальма</span><span class="card-description">Контроль у кожному повороті.</span></span></button>
+        <button type="button" class="service-card card-chassis reveal" data-service="chassis" data-category="care" aria-haspopup="dialog"><img src="./assets/bmw-detail.webp" data-dark-src="./assets/bmw-detail.webp" data-light-src="./assets/bmw-g20-detail.webp" alt="" width="1448" height="1086" loading="lazy"><span class="card-vignette"></span><span class="card-top"><span>04 / CONTROL</span><span class="card-open"><svg><use href="#diagonal"/></svg></span></span><span class="card-content"><span class="card-caption">ВІДЧУВАТИ КОЖЕН РУХ</span><span class="card-title">Ходова<br>та гальма</span><span class="card-description">Контроль у кожному повороті.</span></span></button>
       </div>
       <div class="service-bottom"><p id="filter-status" aria-live="polite">4 напрями сервісу</p><button class="text-link book-trigger">Не знаєте, з чого почати? <span>Розкажіть про авто</span><svg><use href="#arrow"/></svg></button></div>
     </section>
@@ -95,7 +94,7 @@
     <section class="approach" id="approach" aria-labelledby="approach-heading">
       <div class="approach-grid page-width">
         <div class="approach-copy reveal"><p class="eyebrow section-label">02 <span>/</span> ХАРАКТЕР BSS</p><h2 id="approach-heading">Для вас це<br>більше,<br>ніж авто.<br><span>Для нас теж.</span></h2><p>Точний відгук керма. Звук двигуна. Відчуття, яке впізнаєш із першого метра.</p><p>Ми зосереджені на BMW, щоб приділяти увагу саме тому, що робить ваш автомобіль вашим.</p><a class="text-link" href="#process">Познайомитися з підходом <svg><use href="#arrow"/></svg></a></div>
-        <div class="approach-visual reveal"><div class="detail-frame"><img src="./assets/bmw-detail.webp" alt="Срібний диск та гальмівна система BMW — ілюстративний візуал" width="1448" height="1086" loading="lazy"><span class="detail-cross one"></span><span class="detail-cross two"></span><span class="detail-label">ENGINEERED TO FEEL.</span></div><div class="detail-footer"><span>BSS / LVIV</span><span>УВАГА, ЯКУ ВІДЧУВАЄШ.</span><svg><use href="#diagonal"/></svg></div></div>
+        <div class="approach-visual reveal"><div class="detail-frame"><img src="./assets/bmw-detail.webp" data-dark-src="./assets/bmw-detail.webp" data-light-src="./assets/bmw-g20-detail.webp" alt="Срібний диск та гальмівна система BMW — ілюстративний візуал" width="1448" height="1086" loading="lazy"><span class="detail-cross one"></span><span class="detail-cross two"></span><span class="detail-label">ENGINEERED TO FEEL.</span></div><div class="detail-footer"><span>BSS / LVIV</span><span>УВАГА, ЯКУ ВІДЧУВАЄШ.</span><svg><use href="#diagonal"/></svg></div></div>
       </div>
     </section>
 

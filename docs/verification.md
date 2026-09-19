@@ -30,3 +30,8 @@ Still outside this prototype: a live booking endpoint, verified service catalogu
 - Chrome checks passed: light/dark toggle, URL preview, saved theme across reload/navigation, booking request preview, no page errors.
 - No horizontal overflow at 320, 390, 768 and 1024; visually inspected 1440 desktop hero/services/dialog and 390 mobile hero.
 - Only the appearance preference is saved in localStorage. Storage exceptions are caught; the switch remains usable without persistence. The default remains dark, and ?theme=light opens a direct light preview.
+
+## Daylight photography — 2026-09-19
+- Replaced all four photographic placements in light mode with the new G20 hero/detail series, plus a separate lit hero state. Dark mode retains its existing assets.
+- Verified loaded image sources after four consecutive theme switches, with headlights enabled; no stale hidden lighting layer and no browser errors.
+- Re-ran light/dark persistence, booking preview, and responsive overflow checks at 320/390/768/1024. Visually inspected desktop hero, service cards, and mobile hero.

@@ -16,7 +16,8 @@
   const lit = new Image(1672, 941);
   lit.className = 'hero-image hero-image-lit';
   lit.alt = '';
-  lit.src = './assets/bmw-hero-lit.webp';
+  const litSource = () => document.documentElement.dataset.theme === 'light' ? './assets/bmw-g20-hero-lit.webp' : './assets/bmw-hero-lit.webp';
+  lit.src = litSource();
   const lightButton = document.createElement('button');
   lightButton.type = 'button';
   lightButton.className = 'headlight-toggle';
@@ -27,7 +28,23 @@
     hero.classList.toggle('headlights-on', active);
     lightButton.querySelector('.light-state').textContent = active ? 'ON' : 'OFF';
   };
-  lit.decode().then(() => {
+  let lightRevision = 0;
+  document.addEventListener('bss:themechange', () => {
+    if (lit.src === new URL(litSource(), location.href).href) return;
+    const revision = ++lightRevision;
+    lightState(false);
+    lit.classList.add('is-loading');
+    lit.src = litSource();
+    lit.decode().then(() => {
+      if (revision !== lightRevision) return;
+      lit.classList.remove('is-loading');
+      lightState(lockedLight);
+    }).catch(() => {});
+  });
+  let lightControlReady = false;
+  const setupLightControl = () => {
+    if (lightControlReady) return;
+    lightControlReady = true;
     scene.insertBefore(lit, scene.querySelector('.hero-shade'));
     hero.append(lightButton);
     lightButton.addEventListener('click', () => {
@@ -42,7 +59,9 @@
     });
     hero.addEventListener('pointerleave', () => lightState(lockedLight));
     reduce.addEventListener('change', () => lightState(lockedLight));
-  }).catch(() => { /* Keep original photograph when the optional image fails. */ });
+  };
+  lit.addEventListener('load', setupLightControl, {once:true});
+  lit.decode().then(setupLightControl).catch(() => { /* Keep original photo; a later successful load can enable the control. */ });
 
   document.querySelectorAll('.service-card').forEach(card => {
     let pointerFrame = 0;

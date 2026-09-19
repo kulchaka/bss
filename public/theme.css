@@ -61,3 +61,17 @@
 [data-theme=light] .hero-shade{background:linear-gradient(180deg,#f4f5f7 0%,#f4f5f7 35%,#f4f5f780 46%,transparent 57%,transparent 69%,#f4f5f7 89%)}
 [data-theme=light] .hero-actions .text-link{color:#384553}
 }
+
+/* Daylight G20 photography has its own lighting, not a wash over a dark image. */
+[data-theme=light] .hero-image{mask-image:none}
+[data-theme=light] .hero-shade{background:linear-gradient(90deg,#f4f5f7d9,transparent 48%),linear-gradient(0deg,#f4f5f7,transparent 24%)}
+[data-theme=light] .hero-coordinate{color:#485462}
+[data-theme=light] .card-diagnostics,[data-theme=light] .card-chassis{--silver:#3e4b5b;--muted:#526071;color:#171c23;background:#e9edf1}
+[data-theme=light] .service-card>img{filter:none}
+[data-theme=light] .card-vignette,[data-theme=light] .card-chassis .card-vignette{background:linear-gradient(90deg,#f4f5f7e8,transparent 95%),linear-gradient(0deg,#f4f5f7a6,transparent 65%)}
+[data-theme=light] .diagnostic-reticle{border-color:#52607170}
+[data-theme=light] .diagnostic-reticle:before,[data-theme=light] .diagnostic-reticle:after{background:#526071}
+[data-theme=light] .detail-label{color:#172536;background:#f4f5f7db;padding:7px 10px;left:15px;bottom:15px}
+[data-theme=light] .detail-cross{--silver:#526071}
+.hero-image-lit.is-loading{visibility:hidden}
+@media(max-width:560px){[data-theme=light] .hero-shade{background:linear-gradient(180deg,#f4f5f7 0%,#f4f5f7 34%,#f4f5f740 47%,transparent 57%,transparent 70%,#f4f5f7 92%)}}
