@@ -18,16 +18,7 @@
   lit.alt = '';
   const litSource = () => document.documentElement.dataset.theme === 'light' ? './assets/bmw-g20-hero-lit.webp' : './assets/bmw-hero-lit.webp';
   lit.src = litSource();
-  const lightButton = document.createElement('button');
-  lightButton.type = 'button';
-  lightButton.className = 'headlight-toggle';
-  lightButton.setAttribute('aria-pressed', 'false');
-  lightButton.innerHTML = '<span class="light-icon" aria-hidden="true">◖ ≡</span><span>Світло фар</span><span class="light-state" aria-hidden="true">OFF</span>';
-  let lockedLight = false;
-  const lightState = active => {
-    hero.classList.toggle('headlights-on', active);
-    lightButton.querySelector('.light-state').textContent = active ? 'ON' : 'OFF';
-  };
+  const lightState = active => hero.classList.toggle('headlights-on', active);
   let lightRevision = 0;
   document.addEventListener('bss:themechange', () => {
     if (lit.src === new URL(litSource(), location.href).href) return;
@@ -38,30 +29,24 @@
     lit.decode().then(() => {
       if (revision !== lightRevision) return;
       lit.classList.remove('is-loading');
-      lightState(lockedLight);
+      lightState(false);
     }).catch(() => {});
   });
-  let lightControlReady = false;
-  const setupLightControl = () => {
-    if (lightControlReady) return;
-    lightControlReady = true;
+  let lightEffectReady = false;
+  const setupLightEffect = () => {
+    if (lightEffectReady) return;
+    lightEffectReady = true;
     scene.insertBefore(lit, scene.querySelector('.hero-shade'));
-    hero.append(lightButton);
-    lightButton.addEventListener('click', () => {
-      lockedLight = !lockedLight;
-      lightButton.setAttribute('aria-pressed', String(lockedLight));
-      lightState(lockedLight);
-    });
     hero.addEventListener('pointermove', event => {
-      if (event.pointerType !== 'mouse' || lockedLight || reduce.matches) return;
+      if (event.pointerType !== 'mouse' || reduce.matches) return;
       const rect = hero.getBoundingClientRect();
       lightState((event.clientX - rect.left) / rect.width > .48 && !event.target.closest('button,a'));
     });
-    hero.addEventListener('pointerleave', () => lightState(lockedLight));
-    reduce.addEventListener('change', () => lightState(lockedLight));
+    hero.addEventListener('pointerleave', () => lightState(false));
+    reduce.addEventListener('change', () => lightState(false));
   };
-  lit.addEventListener('load', setupLightControl, {once:true});
-  lit.decode().then(setupLightControl).catch(() => { /* Keep original photo; a later successful load can enable the control. */ });
+  lit.addEventListener('load', setupLightEffect, {once:true});
+  lit.decode().then(setupLightEffect).catch(() => { /* Keep original photo; a later successful load can enable the effect. */ });
 
   document.querySelectorAll('.service-card').forEach(card => {
     let pointerFrame = 0;
